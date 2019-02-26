@@ -132,5 +132,10 @@
       }
     }
   },
-  "defaultProject": "angular2-hn"
+  "defaultProject": "angular2-hn",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
