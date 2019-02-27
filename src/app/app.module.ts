@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+// import { HttpModule } from '@angular/http'; angular 7에서 사용하지 않는 형식
 import { HttpClientModule } from '@angular/common/http';
+import { MomentModule } from 'angular2-moment';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -10,6 +12,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ItemComponent } from './item/item.component';
 
 import { HackerNewsAPIService } from './hackernews-api.service';
+import { DomainPipe } from './domain.pipe';
 
 @NgModule({
   declarations: [
@@ -17,12 +20,14 @@ import { HackerNewsAPIService } from './hackernews-api.service';
     HeaderComponent,
     StoriesComponent,
     FooterComponent,
-    ItemComponent
+    ItemComponent,
+    DomainPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MomentModule
   ],
   providers: [HackerNewsAPIService],
   bootstrap: [AppComponent]

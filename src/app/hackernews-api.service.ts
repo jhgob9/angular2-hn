@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
+// import { Http } from '@angular/http'; angular7에서 사용 안됨
+// import { Observable } from 'rxjs/Observable'; angular7에서 사용 안됨
+// import 'rxjs/add/operator/map'; 필요없음
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 @Injectable()
 export class HackerNewsAPIService {
@@ -12,10 +14,11 @@ export class HackerNewsAPIService {
   }
 
   fetchStories(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/topstories.json`).pipe(
-      map((response: Response) => {
-        return response.json();
-      })
-    );
+    return this.http.get(`${this.baseUrl}/topstories.json`);
+    // .map(response => response.json()); 필요하지 않음
+  }
+
+  fetchItem(id: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/item/${id}.json`);
   }
 }
