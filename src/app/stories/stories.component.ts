@@ -17,7 +17,7 @@ export class StoriesComponent implements OnInit {
 
   ngOnInit() {
     // this._hackerNewsAPIService.fetchStories() tslint의 권장으로 언더바 삭제
-    this.hackerNewsAPIService.fetchStories()
+    this.hackerNewsAPIService.fetchStories('news', 1)
                     .subscribe(
                       items => this.items = items,
                       error => console.log('Error fetching stories'));
