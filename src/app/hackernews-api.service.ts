@@ -16,4 +16,8 @@ export class HackerNewsAPIService {
   fetchStories(storyType: string, page: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${storyType}?page=${page}`);
   }
+
+  fetchComments(id: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/item/${id}`);
+  }
 }
