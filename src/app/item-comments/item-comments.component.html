@@ -19,19 +19,18 @@
       <div class="subtext">
         <span>
         {{item.points}} points by
-          <a href="">{{item.user}}</a>
+          <a [routerLink]="['/user', item.user]" routerLinkActive="active">{{item.user}}</a>
+          <!-- <a href="">{{item.user}}</a> -->
         </span>
         <span>
           {{item.time_ago}}
           <span> |
-            <a [routerLink]="['/item', item.id]">
               <span *ngIf="item.comments_count !== 0">
                 {{item.comments_count}}
                 <span *ngIf="item.comments_count === 1">comment</span>
                 <span *ngIf="item.comments_count > 1">comments</span>
               </span>
               <span *ngIf="item.comments_count === 0">discuss</span>
-            </a>
           </span>
         </span>
       </div>

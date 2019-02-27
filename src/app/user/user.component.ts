@@ -4,13 +4,13 @@ import { ActivatedRoute } from '@angular/router';
 import { HackerNewsAPIService } from '../hackernews-api.service';
 
 @Component({
-  selector: 'app-item-comments',
-  templateUrl: './item-comments.component.html',
-  styleUrls: ['./item-comments.component.scss']
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.scss']
 })
-export class ItemCommentsComponent implements OnInit {
+export class UserComponent implements OnInit {
   sub: any;
-  item: any;
+  user;
 
   constructor(
     private hackerNewsAPIService: HackerNewsAPIService,
@@ -19,10 +19,11 @@ export class ItemCommentsComponent implements OnInit {
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      const itemID = +params.id;
-      this.hackerNewsAPIService.fetchComments(itemID).subscribe(
-        data => this.item = data,
-        error => console.log('Could not load item' + itemID));
+      const userID = params.id;
+      this.hackerNewsAPIService.fetchUser(userID).subscribe(data => {
+        this.user = data;
+      }, error => console.log('Could not load user'));
     });
   }
+
 }

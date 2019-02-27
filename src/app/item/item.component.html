@@ -1,14 +1,18 @@
 <div class="item-laptop">
+  <!-- <p *ngIf="item.url.indexOf('http://') === 0 || item.url.indexOf('https://') === 0"> -->
   <p>
-    <a class="title" href="{{item.url}}">
-      {{item.title}}
-    </a>
+    <ng-container *ngIf="item.domain; else other">
+        <a class="title" href="{{item.url}}" target="_blank">{{item.title}}</a>
+    </ng-container>
+    <ng-template #other>
+        <a class="title" [routerLink]="['/item', item.id]">{{item.title}}</a>
+    </ng-template>
     <span *ngIf="item.domain" class="domain">({{item.domain}})</span>
   </p>
   <div class="subtext-laptop">
-    <span>
+    <span *ngIf="item.type !== 'job'">
       {{item.points}} points by
-      <a href="">{{item.user}}</a>
+      <a [routerLink]="['/user', item.user]" routerLinkActive="active">{{item.user}}</a>
     </span>
     <span>
       {{item.time_ago}}

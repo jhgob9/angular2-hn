@@ -20,4 +20,8 @@ export class HackerNewsAPIService {
   fetchComments(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/item/${id}`);
   }
+
+  fetchUser(id: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/user/${id}`);
+  }
 }
